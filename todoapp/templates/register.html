@@ -9,9 +9,19 @@
 </head>
 <body>
     <h1>Register Page</h1>
-    <!-- Your content goes here -->
+   
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <div>
+            <label for="">{{field.label}}</label>
+            <input type="{{field.field.widget.input_type}}" name="{{field.name}}" value="{{field.value}}">
+        </div>
+        {% endfor %}
 
-    <!-- Optional: Link to an external JavaScript file -->
-    {% comment %} <script src="script.js" defer></script> {% endcomment %}
+        <button type="Submit">Register</button>
+
+
+    </form>
 </body>
 </html>
