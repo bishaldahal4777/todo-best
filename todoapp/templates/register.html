@@ -3,25 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document Title</title>
-    <!-- Optional: Link to an external CSS file -->
-    {% comment %} <link rel="stylesheet" href="style.css"> {% endcomment %}
+    <title>Register</title>
 </head>
 <body>
     <h1>Register Page</h1>
-   
-    <form action="" method="POST">
+
+    <form method="POST">
         {% csrf_token %}
+
         {% for field in form %}
         <div>
-            <label for="">{{field.label}}</label>
+            <label for="">{{ field.label }}</label>
             <input type="{{field.field.widget.input_type}}" name="{{field.name}}" value="{{field.value}}">
+              <!-- this will render the input automatically -->
+            
+            {% if field.errors %}
+                <div style="color: red;">
+                    {{ field.errors }}
+                </div>
+            {% endif %}
         </div>
         {% endfor %}
 
-        <button type="Submit">Register</button>
-
-
+        <button type="submit">Register</button>
     </form>
 </body>
 </html>
