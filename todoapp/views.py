@@ -37,3 +37,6 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect("login")
+
+def delete_task(request, id):
+    return HttpResponse("Deleted")
