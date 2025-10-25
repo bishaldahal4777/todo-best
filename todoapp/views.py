@@ -5,6 +5,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Task
 from .forms import TaskForm
 
+# Create your views here.
+@login_required
+def home(request):
+    return render(request, "index.html")
 
 def register_view(request):
     if request.method == "POST":
